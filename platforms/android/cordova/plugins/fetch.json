@@ -1,0 +1,11 @@
+{
+    "cordova-plugin-bluetooth-printer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/srehanuddin/Cordova-Plugin-Bluetooth-Printer.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
