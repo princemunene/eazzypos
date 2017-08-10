@@ -1883,7 +1883,7 @@ margin:auto;
 
 .loginform{
 	
-    height: 140px;
+    height: 130px;
     background-color: none;
     background:#fff;border:1px solid #ccc;border-radius:10px;padding:2%;
     position: absolute;
@@ -2272,3 +2272,33 @@ max-width:100%;
 .leiframe{position:relative;float:right; margin-right:0px; margin-top:0px;width:90px; height:90px;border: 2px solid #2ad5dc;overflow:hidden; background:#fff; padding:5px}
 .custuploadblock_js {background:url(images/browse.png) no-repeat center;width:50px;height:50px;display:block;position:relative;overflow:hidden;cursor:pointer; float:right; margin:20px 10px 0 20px}
 .transfileform_js {font-size:50px;height:50px;position:absolute;top:0;right:0;z-index:2;border:0;padding:0;cursor:pointer;}
+
+
+.item {
+  border-color: #ddd;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 16px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 16px; }
+  .item h2 {
+    margin: 0 0 4px 0;
+    font-size: 16px; }
+  .item h3 {
+    margin: 0 0 4px 0;
+    font-size: 14px; }
+  .item h4 {
+    margin: 0 0 4px 0;
+    font-size: 12px; }
+  .item h5, .item h6 {
+    margin: 0 0 3px 0;
+    font-size: 10px; }
+  .item p {
+    color: #666;
+    font-size: 14px; }
+  .item h1:last-child, .item h2:last-child, .item h3:last-child, .item h4:last-child, .item h5:last-child, .item h6:last-child, .item p:last-child {
+    margin-bottom: 0; }

@@ -23,8 +23,7 @@
 <body style="background:#fff;overflow:auto">
 
   <script type="text/javascript"> 
-
-    function formatstring(text,num){
+   function formatstring(text,num){
         len=text.length;
         if(len>num){
          text=text.substr(0, num);
@@ -41,7 +40,6 @@
         text=text+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
         return text;
     }
-
     function formatstring2(text,num){
         len=text.length;
         if(len>num){
@@ -56,9 +54,10 @@
 
         }
 
-        text=text+'     ';
+        text=text+'   ';
         return text;
     }
+
     tot=0;
     var array=JSON.parse(window.localStorage.getItem('receiptdata'));
     
@@ -113,10 +112,14 @@
            <p style="font-weight:bold; margin:0 0 0 0px;padding-bottom:0"><script>document.write(formatstring('Item Name',30)+formatstring('Qty',5)+'Total')</script></p>
            <div style="clear:both;border-bottom:1px dashed #333;margin-bottom:5px"></div>
             <p style="font-weight:normal; margin:0 0 0 0px;padding-bottom:0"><script>
-            tot=0;rows='';
+            tot=0;rows='';rows2='';
             for (var i=0;i<array.length;i++){
             row=formatstring(array[i]['ItemName'],30)+formatstring(array[i]['Qty'],5)+array[i]['TotalPrice'];
             rows=rows+row+"\n";
+
+            rowm=formatstring2(array[i]['ItemName'],10)+formatstring2(array[i]['Qty'],3)+array[i]['TotalPrice'];
+            rows2=rows2+rowm+"\n";
+
             document.write(row+'<br/>')
             amount=array[i]['TotalPrice'];amount=amount.replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
             tot=parseFloat(tot,10)+parseFloat(amount,10);
@@ -131,7 +134,7 @@
 
           <p style="text-align:center; font-weight:normal; margin:0 0 0 0px;">You have been Served By: <b><script>document.write(cashier)</script></b><br/>System Developers: QET SYSTEMS</p>
           
-          <script> var text=window.localStorage.getItem('comname') +"\n" + window.localStorage.getItem('comadd') +"\nTel: " + window.localStorage.getItem('comtel') +"\n.....................................................................................\n\n"+doctype+"\n"+doctype+" No: " + rcptno +"\nDate: " + date +"\n Client Name: "+ client + "\n.....................................................................................\n"+ formatstring2('Item Name',30)+formatstring2('Qty',5)+'Total' + "\n" + rows + "\n.....................................................................................\n"+ formatstring2('Total',37)+tot.formatMoney(2, '.', ',')  + "\n" + formatstring2('Amount Tendered',35)+tendered.formatMoney(2, '.', ',') + "\n" + formatstring2('Change',36)+change.formatMoney(2, '.', ',')+"\n\n.....................................................................................\n\nYou have been Served By: " + cashier +"\n\nSystem Developers: QET SYSTEMS\n\n\n\n\n\n";
+          <script> var text=window.localStorage.getItem('comname') +"\n" + window.localStorage.getItem('comadd') +"\nTel: " + window.localStorage.getItem('comtel') +"\n................................\n\n"+doctype+"\n"+doctype+" No: " + rcptno +"\nDate: " + date +"\nClient Name: "+ client + "\n................................\n"+ formatstring2('Item Name',10)+formatstring2('Qty',3)+'Total' + "\n................................\n" + rows2 + "\n................................\n"+ formatstring2('Total',12)+tot.formatMoney(2, '.', ',')  + "\n" + formatstring2('Amount Tendered',16)+tendered.formatMoney(2, '.', ',') + "\n" + formatstring2('Change',12)+change.formatMoney(2, '.', ',')+"\n\n................................\n\nYou have been Served By: " + cashier +"\n\nSystem Developers: QET SYSTEMS\n\n\n\n\n\n";
           </script>
          
             <input type="button" name="submit" class="form_submit" id="submit" style="" value="PRINT RECEIPT" onclick="printreceipt(text)"/>

@@ -39,7 +39,7 @@ echo'<tr style="width:100%; height:20px;padding:0; background:'.$col.'; font-wei
 ?>
 <td  style="width:4%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $aa ?></td>
 <td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo dateprint($rowa['Date']) ?></td>
-<td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5pxpadding:5px "><?php  echo $refno ?></td>
+<td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $refno ?></td>
 <td  style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['ItemName']) ?></td>
 <td  style="width:11%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['Qty']) ?></td>
 <td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo number_format($rowa['UnitPrice'], 2, ".", "," ) ?></td>
@@ -1158,12 +1158,12 @@ $fname='chart_of_accounts_report';
 <tbody>
 <tr style="width:auto; height:20px;color:#fff; background:#333; padding:0">
       
-      <td  style="width:5%">No.</td>
-      <td  style="width:20%">Account Name</td>
-      <td  style="width:10%">Code</td>
-      <td  style="width:25%">Financial Statement</td>
-      <td  style="width:15%">Category</td>
-      <td  style="width:10%">Normally</td>
+      <td  style="width:5%;padding:5px">No.</td>
+      <td  style="width:20%;padding:5px">Account Name</td>
+      <td  style="width:10%;padding:5px">Code</td>
+      <td  style="width:25%;padding:5px">Financial Statement</td>
+      <td  style="width:15%;padding:5px">Category</td>
+      <td  style="width:10%;padding:5px">Normally</td>
   </tr> 
 
 
@@ -1188,12 +1188,12 @@ if($i%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal  ">';}
 ?>
 
-      <td style="width:5%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo $a ?></td>
-      <td style="width:20%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo stripslashes($row['name']) ?></td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo stripslashes($row['ledgerid']) ?></td>
-      <td style="width:25%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo $statement ?></td>
-      <td style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo stripslashes($row['type']) ?></td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo $normal ?></td>
+      <td style="width:5%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo $a ?></td>
+      <td style="width:20%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo stripslashes($row['name']) ?></td>
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo stripslashes($row['ledgerid']) ?></td>
+      <td style="width:25%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo $statement ?></td>
+      <td style="width:15%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo stripslashes($row['type']) ?></td>
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo $normal ?></td>
       
       </tr>
 
@@ -1423,9 +1423,9 @@ if(isset($_GET['d2'])){
 <tbody>
 <tr style="width:auto; height:20px;color:#fff; background:#333; padding:0">
       
-      <td  style="width:50%">Ledger</td>
-      <td  style="width:25%">Dr</td>
-      <td  style="width:25%">Cr</td>
+      <td  style="width:50%;padding:5px">Ledger</td>
+      <td  style="width:25%;padding:5px">Dr</td>
+      <td  style="width:25%;padding:5px">Cr</td>
       </tr> 
 
 
@@ -1499,11 +1499,11 @@ if($i%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal;cursor:pointer">';}
 ?>
 
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     <?php if($type=='Expense'||$type=='Asset'){?><?php echo number_format($bal, 2, ".", "," ) ?><?php }?>
     </td>
-    <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+    <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     <?php if($type=='Liability'||$type=='Revenue'||$type=='Equity'){?><?php echo number_format($bal, 2, ".", "," ) ?><?php }?>
     </td>
        </tr>
@@ -1512,8 +1512,8 @@ if($i%2==0){
   <tr style="width:auto; height:20px;color:#fff; background:#333; padding:0">
       
       <td  style="width:50%">Totals</td>
-      <td  style="width:25%"><?php echo number_format($a, 2, ".", "," ) ?></script></td>
-      <td  style="width:25%"><?php echo number_format($a, 2, ".", "," ) ?></td>
+      <td  style="width:25%;padding:5px"><?php echo number_format($a, 2, ".", "," ) ?></script></td>
+      <td  style="width:25%;padding:5px"><?php echo number_format($a, 2, ".", "," ) ?></td>
       </tr> 
 
 </tbody>
@@ -1570,9 +1570,9 @@ if(isset($_GET['d2'])){
 <tbody>
 <tr style="width:auto; height:20px;color:#fff; background:#333; padding:0">
       
-      <td  style="width:50%">Ledger</td>
-      <td  style="width:25%">Dr</td>
-      <td  style="width:25%">Cr</td>
+      <td  style="width:50%;padding:5px">Ledger</td>
+      <td  style="width:25%;padding:5px">Dr</td>
+      <td  style="width:25%;padding:5px">Cr</td>
       </tr> 
 
 
@@ -1636,10 +1636,10 @@ if($c%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal  ;cursor:pointer">';}
 ?>
 
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     </td>
-    <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+    <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     <?php echo number_format($bal, 2, ".", "," ) ?></script>
     </td>
        </tr>
@@ -1667,11 +1667,11 @@ if($c%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal;cursor:pointer " >';}
 ?>
 
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     <?php echo number_format($bal, 2, ".", "," ) ?>
     </td>
-      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;">
+      <td style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">
     </td>
     
        </tr>
@@ -1685,9 +1685,9 @@ if($c%2==0){
 
   <tr style="width:auto; height:20px;color:#fff; background:#333; padding:0">
       
-      <td  style="width:50%">Net Income</td>
-      <td  style="width:25%"><?php echo number_format(($a-$b), 2, ".", "," ) ?></td>
-      <td  style="width:25%"></td>
+      <td  style="width:50%;padding:5px">Net Income</td>
+      <td  style="width:25%;padding:5px"><?php echo number_format(($a-$b), 2, ".", "," ) ?></td>
+      <td  style="width:25%;padding:5px"></td>
       </tr> 
 
  </tbody>     
@@ -1740,8 +1740,8 @@ if(isset($_GET['d2'])){
 <table id="datatable"  style="width:100%;text-align:center;font-weight:bold;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; padding:0; " >
 <tbody>
 <tr style="width:100%; height:20px;padding:0; font-weight:normal;background:#333;color:#fff ">
-  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Asset Name</td>
-    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;">Kshs.</td>
+  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Asset Name</td>
+    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Kshs.</td>
    </tr>
 <?php
 if($name=='All'){$debtype='debit';$credtype='credit';}else{$debtype=$name.'_DEBIT';$credtype=$name.'_CREDIT';}
@@ -1825,8 +1825,8 @@ if($u%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal  ;cursor:pointer "  >';}
 ?>
 
-      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format($bal, 2, ".", "," ) ?></td>
+      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format($bal, 2, ".", "," ) ?></td>
        </tr>
       
 <?php
@@ -1836,13 +1836,13 @@ if($u%2==0){
 
 ?>
 <tr style="width:100%; height:20px;padding:0; font-weight:bold;background:#333;color:#fff ">
-  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Total Assets</td>
-    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format($a, 2, ".", "," ) ?></td>
+  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Total Assets</td>
+    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format($a, 2, ".", "," ) ?></td>
    </tr>
 
   <tr style="width:100%; height:20px;padding:0; font-weight:normal;background:#333;color:#fff ">
-  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Liability Name</td>
-    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;">Kshs.</td>
+  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Liability Name</td>
+    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Kshs.</td>
    </tr>
 <?php
 $b=0;$v=0;
@@ -1861,8 +1861,8 @@ if($v%2==0){
     }else{echo'<tr style="width:100%; height:20px;padding:0; background:#f0f0f0; font-weight:normal  ;cursor:pointer ">';}
 ?>
 
-      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format($bal, 2, ".", "," ) ?></td>
+      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format($bal, 2, ".", "," ) ?></td>
        </tr>
       
 <?php
@@ -1871,8 +1871,8 @@ if($v%2==0){
 }
 ?>
   <tr style="width:100%; height:20px;padding:0; font-weight:normal;background:#333;color:#fff ">
-  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Equity Name</td>
-    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;">Kshs.</td>
+  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Equity Name</td>
+    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Kshs.</td>
    </tr>
 <?php
 $c=0;$x=0;
@@ -1895,8 +1895,8 @@ if($x%2==0){
       }
 ?>
 
-      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;"><?php  echo  $name ?></td>
-      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format($bal, 2, ".", "," ) ?></td>
+      <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php  echo  $name ?></td>
+      <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format($bal, 2, ".", "," ) ?></td>
        </tr>
       
 <?php
@@ -1906,14 +1906,14 @@ if($x%2==0){
 ?>
 
 <tr style="width:100%; height:20px;padding:0; font-weight:normal ;cursor:pointer " >
-<td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Profit for the Year</td>
-<td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format($g, 2, ".", "," ) ?></td>
+<td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Profit for the Year</td>
+<td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format($g, 2, ".", "," ) ?></td>
  </tr>
 
 
 <tr style="width:100%; height:20px;padding:0; font-weight:bold;background:#333;color:#fff ">
-  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;">Total Liabilities & Equity</td>
-    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;"><?php echo number_format(($b+$c-$d+$g), 2, ".", "," ) ?></td>
+  <td style="width:70%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px">Total Liabilities & Equity</td>
+    <td style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px"><?php echo number_format(($b+$c-$d+$g), 2, ".", "," ) ?></td>
    </tr>
    </tbody>
 </table>

@@ -1,5 +1,4 @@
-<?php
-include('db_fns.php');
+<?php include('db_fns.php');
 if(isset($_POST['stamp'])){
 $stamp =$_POST['stamp'];
 }else $stamp=0;

@@ -79,9 +79,9 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-var server='localhost';
+var server='qet.co.ke';
 window.localStorage.setItem('server',server);
-$('#username').focus();
+$('#passwd').focus();
 });
 document.onkeydown = keydown;
 function keydown(evt){
@@ -105,7 +105,7 @@ else  if(passwd==''){
 swal("Error", "Enter your password!", "error");
 }
 else {
-$('#message').html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
+$('#message').html('<img id="img-spinner" src="images/load.gif" style="width:30px" alt="Loading"/>');
 $.ajax({
   type: "POST",
    url: "http://"+window.localStorage.getItem('server')+"/eazzypos/www/login.php",

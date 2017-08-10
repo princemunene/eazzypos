@@ -2,10 +2,10 @@
 <widget id="com.example.eazzyposmain" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>EazzyPos</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A Retail Point of Sale Application.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="info@qet.co.ke" href="http://cordova.io">
+        QET SYSTEMS LTD
     </author>
     <content src="index.html" />
     <access origin="*" />

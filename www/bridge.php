@@ -124,7 +124,7 @@ case 9:
         }
         $pre = array_unique($pre);$pre=array_slice($pre,0,10); $pre=array_reverse($pre);
         foreach ($pre as $key => $val) {
-        $result =mysql_query("select * from sales where Date='".$val."'");
+        $result =mysql_query("select * from sales where Date='".$val."' and Type='Sale'");
         $num_results = mysql_num_rows($result);
         $tot=0;
           for ($i=0; $i <$num_results; $i++) {
@@ -165,15 +165,15 @@ case 9:
 
                     $resulta =mysql_query("select  * from ledgerbalances where ledgerid = '".$lid."' order by id desc limit 0,1000" );
                     $rowa=mysql_fetch_array($resulta);
-                    $pre[]=stripslashes($rowa['date']);
+                    $pre[stripslashes($rowa['stamp'])]=stripslashes($rowa['date']);
 
 
           }
        
-        $tot=0;
-        $pre = array_unique($pre);$pre=array_slice($pre,0,10); $pre=array_reverse($pre);
+        krsort($pre);
+         $pre=array_slice($pre,0,10); $pre=array_reverse($pre);
         foreach ($pre as $key => $val) {
-        
+          $tot=0;
           $result =mysql_query("select * from ledgers where type='Expense' and ledgerid!=644 and ledgerid!=651 order by name");
           $num_results = mysql_num_rows($result); 
           for ($i=0; $i <$num_results; $i++) {
@@ -312,13 +312,13 @@ case 14:
 
 
                  $todsales=0;
-                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp='".date('Ymd')."' and Status!=0");
+                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp='".date('Ymd')."' and Status!=0 and Type='Sale'");
                  $rowa=mysql_fetch_array($resulta);
                  $todsales+=stripslashes($rowa['amount']);
 
 
                  $todsalesmon=0;
-                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0");
+                 $resulta =mysql_query("select SUM(TotalPrice) as amount from sales where Stamp>='".date('Ym')."01' and Stamp<='".date('Ym')."31' and Status!=0 and Type='Sale'");
                  $rowa=mysql_fetch_array($resulta);
                  $todsalesmon+=stripslashes($rowa['amount']);
 

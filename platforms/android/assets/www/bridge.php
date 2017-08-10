@@ -165,15 +165,15 @@ case 9:
 
                     $resulta =mysql_query("select  * from ledgerbalances where ledgerid = '".$lid."' order by id desc limit 0,1000" );
                     $rowa=mysql_fetch_array($resulta);
-                    $pre[]=stripslashes($rowa['date']);
+                    $pre[stripslashes($rowa['stamp'])]=stripslashes($rowa['date']);
 
 
           }
        
-        $tot=0;
-        $pre = array_unique($pre);$pre=array_slice($pre,0,10); $pre=array_reverse($pre);
+        krsort($pre);
+         $pre=array_slice($pre,0,10); $pre=array_reverse($pre);
         foreach ($pre as $key => $val) {
-        
+          $tot=0;
           $result =mysql_query("select * from ledgers where type='Expense' and ledgerid!=644 and ledgerid!=651 order by name");
           $num_results = mysql_num_rows($result); 
           for ($i=0; $i <$num_results; $i++) {

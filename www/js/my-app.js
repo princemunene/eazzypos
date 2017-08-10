@@ -175,11 +175,14 @@ var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, 
 // Initialize your app
 var myApp = new Framework7({
     animateNavBackIcon: true,
+    animatePages:false,
     precompileTemplates: true,
 	swipeBackPage: true,
 	swipeBackPageThreshold: 1,
 	pushState: false,
-    template7Pages: true
+    template7Pages: true,
+    cache: false,
+    cacheDuration: 0
 });
 
 
@@ -198,12 +201,12 @@ function setrightsli(){
     .css('opacity', '0')
     .each(function(index, item) {
       var fieldName=$(item).attr('id');len=fieldName.length-6;code=fieldName.substr(6, len);
-       if(rights[code]=='YES'){setTimeout(function() {$(item).fadeTo('slow',1,"easeInOutCirc");}, index*175);}
+       if(rights[code]=='YES'){setTimeout(function() {$(item).fadeTo('slow',1,"easeInOutCirc");}, index*75);}
   }); 
   $(".main-nav ul > li span")
       .css('opacity', '0')
       .each(function(index, item) {
-      setTimeout(function() {$(item).animate({'left': '0px', 'opacity':1},500,"easeInOutCirc")}, index*175);
+      setTimeout(function() {$(item).animate({'left': '0px', 'opacity':1},200,"easeInOutCirc")}, index*75);
      }); 
 
 }
@@ -217,7 +220,8 @@ jQuery(document).ready(function() {
 
 	$(".logo").animate({'top': '20px'},'slow',"easeInOutCirc");
 	$(".cartitems").delay(1000).animate({'width': '30px', 'height': '30px', 'top':'10px', 'right':'10px', 'opacity':1},1000,"easeOutBounce");
-	setrightsli()
+	setrightsli();
+  setrightsli()
 		
     $('.item_delete').click(function(e){
         e.preventDefault();
@@ -622,6 +626,28 @@ function finrep(code){
       }); 
     }
     
+}
+
+function tickaccess(a,b){
+   
+    setTimeout(function() {
+
+    var param = $('input[name='+a+b+']:checked').val();
+    if(param!='YES'){param='NO';}
+   
+         
+    $.ajax({
+    url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/data.php',
+    data:{id:6,categ:a,code:b,rght:param},
+    success:function(data){
+
+    }
+    }); 
+
+
+    }, 1000);
+
+
 }
 
 
@@ -1042,7 +1068,7 @@ myApp.onPageInit('settings', function (page) {
               if(result[i]['Admin']=='YES'){checkadmin='checked';}
               if(result[i]['Manager']=='YES'){checkmanager='checked';}
               if(result[i]['Cashier']=='YES'){checkcashier='checked';}
-                 $("#myrights").append('<li class=\"table_row\"><div class=\"table_section_14\">' + result[i]['Descrip'] + '</div><div class=\"table_section_14\"><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\" onclick=\"tickaccess(\'Admin\','+code+')\" name=\"Admin'+code+'\" '+checkadmin+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div><div class=\"table_section_14\"><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\" onclick=\"tickaccess(\'Manager\','+code+')\" name=\"Manager'+code+'\" '+checkmanager+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div><div class=\"table_section_14\"><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\" onclick=\"tickaccess(\'Cashier\','+code+')\" name=\"Cashier'+code+'\" '+checkcashier+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div></li>');
+                 $("#myrights").append('<li class=\"table_row\"><div class=\"table_section_14\">' + result[i]['Descrip'] + '</div><div class=\"table_section_14\" onclick=\"tickaccess(\'Admin\','+code+')\" ><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\" name=\"Admin'+code+'\" '+checkadmin+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div><div class=\"table_section_14\" onclick=\"tickaccess(\'Manager\','+code+')\" ><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\" name=\"Manager'+code+'\" '+checkmanager+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div><div class=\"table_section_14\" onclick=\"tickaccess(\'Cashier\','+code+')\"><div class=\"form_row_right\"  style=\"border:0\"><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-input\"><label class=\"label-switch\" style=\"\"><input type=\"checkbox\"  name=\"Cashier'+code+'\" '+checkcashier+' value=\"YES\"><div class=\"checkbox\"></div> </label> </div> </div></div></div></div></li>');
             
                }
            
@@ -1063,6 +1089,7 @@ myApp.onPageInit('settings', function (page) {
         if(rights[111]=='YES'){ $("#atab3").show()}
         if(rights[112]=='YES'){ $("#atab4").show()}
        
+
  
 
 
@@ -1377,9 +1404,19 @@ myApp.onPageInit('checkout', function (page) {
        
 })
 
+
+myApp.onPageInit('newitem', function (page) {
+          
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/eazzypos/www/upload.php');
+      
+     
+})
+
+
 myApp.onPageInit('edititem', function (page) {
 	        
-	        var itemcode = window.localStorage.getItem('sysitemcode');
+	    var itemcode = window.localStorage.getItem('sysitemcode');
+      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/eazzypos/www/upload.php');
 			
 			$.ajax({
 			url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/bridge.php',
@@ -1550,17 +1587,7 @@ function saveitemcredit(i,code){
 }
 
 
-function tickaccess(a,b){
-    var param = $('input[name='+a+b+']:checked').val();
-        if(param!='YES'){param='NO';}
 
-    $.ajax({
-    url:'data.php',
-    data:{id:6,categ:a,code:b,rght:param},
-    success:function(data){
-    }
-    }); 
-}
 function reprintreceipt(){
 
 	window.location.href = "receipt.html";
@@ -2160,7 +2187,7 @@ function savepass(){
 	else{
 	$("#savepass").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 	$.ajax({
-	url:'data.php',
+	url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/data.php',
 	data:{id:3,opass:opass,npass:npass,cpass:cpass,user:username},
 	success:function(data){
 	$('#savepass').html(data);
@@ -2191,7 +2218,7 @@ var pos = $('#userpos').val();
 	else{
 		$("#saveuser").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'data.php',
+		url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/data.php',
 		data:{id:4,user:user,name:name,pos:pos,pass:pass,username:username},
 		success:function(data){
 		$('#saveuser').html(data);
@@ -2236,7 +2263,7 @@ if(respass!=1){respass=0}
 	else{
 		$("#saveuser2").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
 		$.ajax({
-		url:'data.php',
+		url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/data.php',
 		data:{id:5,user:user,name:name,pos:pos,userid:userid,respass:respass,username:username},
 		success:function(data){
 		$('#saveuser2').html(data);
@@ -2264,7 +2291,7 @@ var location = $('#description').val();
   else{
     $("#savecom").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
-    url:'data.php',
+    url:'http://'+window.localStorage.getItem('server')+'/eazzypos/www/data.php',
     data:{id:16,user:username,comname:comname,tel:tel,address:address,website:website,email:email,location:location},
     success:function(data){
     $('#savecom').html(data);
